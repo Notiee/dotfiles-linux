@@ -1,0 +1,25 @@
+#!/bin/bash
+# Shebang not needed but here for nicer colors in vim LUL
+#
+#	+-------------------------------+
+#	#			 	#
+#	#				#
+#	#      Nota's helper script	#
+#	#				#
+#	#				#
+#	+-------------------------------+
+#
+# Runs dwm with startx if there's no display
+# This is needed if display/login manager doesn't handle giving user a graphical display when starting for example xsessions (dwm.desktop) etc...
+#
+# Examples where $DISPLAY is set are graphical display managers: LightDM, SDDM, GDM...
+# EXamples where $DISPLAY is not set are login managers (tui): greetd (agreety, tuigreet...)
+if [[ $DISPLAY ]]; then
+	echo "Display: TRUE"
+	exec dwm
+else 
+	echo "Display: FALSE"
+	exec startx /usr/local/bin/dwm
+fi
+
+
